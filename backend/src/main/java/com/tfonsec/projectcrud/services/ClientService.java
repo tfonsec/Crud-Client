@@ -1,4 +1,4 @@
-package com.tfonsec.projectcrud.servicies;
+package com.tfonsec.projectcrud.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tfonsec.projectcrud.dto.ClientDTO;
 import com.tfonsec.projectcrud.entities.Client;
 import com.tfonsec.projectcrud.repositories.ClientRepository;
+import com.tfonsec.projectcrud.services.exceptions.EntityNotFoundException;
 
 @Service
 public class ClientService {
@@ -30,7 +31,7 @@ public class ClientService {
 	@Transactional(readOnly = true)
 	public ClientDTO findById(Long id) {
 		Optional<Client> obj = repository.findById(id);
-		Client entity = obj.get();
+		Client entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity not found"));
 		return new ClientDTO(entity);
 	}
 	

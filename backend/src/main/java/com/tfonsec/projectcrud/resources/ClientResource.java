@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tfonsec.projectcrud.dto.ClientDTO;
 import com.tfonsec.projectcrud.entities.Client;
-import com.tfonsec.projectcrud.servicies.ClientService;
+import com.tfonsec.projectcrud.services.ClientService;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -28,6 +28,7 @@ public class ClientResource {
   }
 	@GetMapping(value = "/{id}")
 	public  ResponseEntity <ClientDTO> findById(@PathVariable Long id) {
+		
 		ClientDTO dto  = service.findById(id);
 		return ResponseEntity.ok().body(dto);
   }
