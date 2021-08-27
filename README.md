@@ -7,7 +7,7 @@
       
       
 - Busca paginada de recursos
-- Busca de recurso po id
+- Busca de recurso por id
 - Inserir novo recurso
 - Atualizar recruso
 - Deletar recurso
